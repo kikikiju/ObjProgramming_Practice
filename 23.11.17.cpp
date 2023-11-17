@@ -5,17 +5,32 @@
 using namespace std;
 
 int main() {
-	std::vector<char>v1, v2;
 	string a;
 	cin >> a;
+	int n = a.size();
+	char* b1 = new char[n];
+	char* b2 = new char[n];
 
-	for (int i = 0; i < a.size(); ++i) {
-		v1.push_back(a[i]);
-	}
-	for (int k = a.size() - 1; k >= 0; --k) {
-		v2.push_back(a[k]);
+	for (int i = 0; i < n; ++i) {
+		b1[i] = a[i];
 	}
 
-	if (v1 == v2) cout << 1;
-	else cout << 0;
+	for (int j = 0; j < n; ++j) {
+		b2[n - 1 - j] = a[j];
+	}
+
+
+	bool fel = true;
+	for (int k = 0; k < n; ++k) {
+		if (b1[k] != b2[k]) {
+			fel = false;
+			break;
+		}
+		
+	}
+
+	cout << fel;
+
+	delete[] b1;
+	delete[] b2;
 }
